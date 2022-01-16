@@ -45,10 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rangefilter',
-    # Our apps
     'rest_framework',
-    'agency.apps.AgencyConfig',
-    'social',
+    # Our apps
+    'agency',
     'notification',
     'clear_cache',
     'prettyjson',
