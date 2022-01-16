@@ -14,19 +14,12 @@ services:
       - .:/app
     ports: 
       - 8200:8200
-    logging:
-      driver: json-file
-      options:
-        max-file: '3'
-        max-size: 15m
     restart: unless-stopped
   
   redis:
     image: redis
     container_name: news_crawler_redis
     restart: always
-    logging:
-      driver: none
   
   crawler_worker:
     image: crawler
@@ -36,11 +29,6 @@ services:
     volumes:
       - .:/app
     command: ["celery", "-A", "app", "worker", "-l", "info", "--pidfile="]
-    logging:
-      driver: json-file
-      options:
-        max-file: '3'
-        max-size: 15m
     restart: always
   
   crawler_beat:
@@ -51,16 +39,9 @@ services:
     volumes:
       - .:/app
     command: ["celery", "-A", "app", "beat", "-l", "info", "--pidfile="]
-    logging:
-      driver: json-file
-      options:
-        max-file: '3'
-        max-size: 15m
     restart: always
   
   crawler_chrome:
     image: selenium/standalone-chrome
     container_name: news_crawler_chrome
-    logging:
-      driver: none
     restart: always
