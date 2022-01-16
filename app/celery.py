@@ -27,17 +27,16 @@ crawler.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 crawler.conf.beat_schedule = {
     'check-agencies-60-seconds': {
         'task': 'check_agencies',
-        'schedule': 1 * 30,
+        'schedule': 10 * 60,
     },
     'redis-exporter-300-seconds': {
         'task': 'redis_exporter',
-        'schedule': 1 * 30,
+        'schedule': 5 * 60,
     },
     'remove_obsolete_reports': {
         'task': 'remove_obsolete_reports',
         'schedule': crontab(minute=0, hour=0),
-    },
-    "crawl_linkedin": {"task": "crawl_linkedin", "schedule": crontab(minute=0, hour=0)},
+    }
 }
 
 
