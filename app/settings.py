@@ -19,6 +19,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 SERVER_IP = env.str('SERVER_IP')
+DB_PORT = env.str('DB_PORT')
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
