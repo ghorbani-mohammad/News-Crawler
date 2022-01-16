@@ -152,7 +152,7 @@ def fetch_alexa_rank(agency_id, agency_url):
     options.add_argument('--disable-dev-shm-usage')
 
     driver = webdriver.Remote(
-        "http://crawler_chrome_browser:4444/wd/hub",
+        "http://news_crawler_chrome_browser:4444/wd/hub",
         desired_capabilities=DesiredCapabilities.CHROME,
         options=options,
     )
