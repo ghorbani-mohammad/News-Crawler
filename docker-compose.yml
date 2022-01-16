@@ -3,7 +3,7 @@ version: '3.4'
 services:
   crawler_api:
     image: crawler
-    container_name: crawler_api
+    container_name: army_crawler_api
     command: ["python", "/app/manage.py", "runserver", "0.0.0.0:8200"]
     build:
       context: .
@@ -23,7 +23,7 @@ services:
   
   redis:
     image: redis
-    container_name: crawler_redis
+    container_name: army_crawler_redis
     # volumes: 
     #   - ./redis:/data
     restart: always
@@ -32,7 +32,7 @@ services:
   
   crawler_worker:
     image: crawler
-    container_name: crawler_worker
+    container_name: army_crawler_worker
     env_file:
       - .env
     volumes:
@@ -47,7 +47,7 @@ services:
   
   crawler_beat:
     image: crawler
-    container_name: crawler_beat
+    container_name: army_crawler_beat
     env_file:
       - .env
     volumes:
@@ -62,7 +62,7 @@ services:
   
   crawler_chrome:
     image: selenium/standalone-chrome
-    container_name: crawler_chrome
+    container_name: army_crawler_chrome
     logging:
       driver: none
     restart: always
