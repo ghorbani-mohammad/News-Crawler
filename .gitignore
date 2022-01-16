@@ -1,5 +1,5 @@
-.env
 .dockerignore
+.env
 .idea/*
 .vscode/launch.json
 .vscode/settings.json
@@ -10,6 +10,7 @@
 agency/__pycache__/*
 app/__pycache__/*
 app/asgi.py
+celerybeat-schedule
 celerybeat-schedule.bak
 celerybeat-schedule.dat
 celerybeat-schedule.dir
