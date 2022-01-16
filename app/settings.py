@@ -20,13 +20,15 @@ ALLOWED_HOSTS = ['*']
 
 SERVER_IP = env.str('SERVER_IP')
 DB_PORT = env.str('DB_PORT')
+DB_USER = env.str('DB_USER')
+DB_PASS = env.str('DB_PASS')
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'OPTIONS': {'options': '-c search_path=army'},
         'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'army',
+        'USER': DB_USER,
+        'PASSWORD': DB_PASS,
         'HOST': SERVER_IP,
         'PORT': DB_PORT,
     },
