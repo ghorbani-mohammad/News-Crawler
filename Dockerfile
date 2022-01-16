@@ -1,7 +1,5 @@
 FROM python:3.7
 
-EXPOSE 8000
-
 # Keeps Python from generating .pyc files in the container
 ENV PYTHONDONTWRITEBYTECODE 1
 
