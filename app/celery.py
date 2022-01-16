@@ -10,8 +10,8 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'app.settings')
 # TODO: redis port and ip and db must be dynamic
 crawler = Celery(
     'crawler',
-    broker='redis://army_crawler_redis:6379/10',
-    backend='redis://army_crawler_redis:6379/10',
+    broker='redis://news_crawler_redis:6379/10',
+    backend='redis://news_crawler_redis:6379/10',
     include=['app.tasks'],
 )
 

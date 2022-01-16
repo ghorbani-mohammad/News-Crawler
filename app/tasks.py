@@ -20,7 +20,7 @@ from agency.crawler_engine import CrawlerEngine
 logger = logging.getLogger('django')
 
 # TODO: configs must be dynamic
-redis_news = redis.StrictRedis(host='army_crawler_redis', port=6379, db=0)
+redis_news = redis.StrictRedis(host='news_crawler_redis', port=6379, db=0)
 Exporter_API_URI = "http://{}:8888/crawler/news".format(settings.SERVER_IP)
 Exporter_API_headers = {
     'Content-Type': "application/json",

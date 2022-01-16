@@ -46,9 +46,9 @@ class CrawlerEngine:
         # TODO: ip and port of redis must be dynamic
         # initialize redis_news memory for storing news
         # initialize redis_duplicate_checker for checking duplicate links
-        self.redis_news = redis.StrictRedis(host='army_crawler_redis', port=6379, db=0)
+        self.redis_news = redis.StrictRedis(host='news_crawler_redis', port=6379, db=0)
         self.redis_duplicate_checker = redis.StrictRedis(
-            host='army_crawler_redis', port=6379, db=1
+            host='news_crawler_redis', port=6379, db=1
         )
 
         # locking webpage, so laters tasks can not crawl the page simultaneously
