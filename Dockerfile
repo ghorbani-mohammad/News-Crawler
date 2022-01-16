@@ -13,6 +13,4 @@ RUN python -m pip install -r requirements.txt
 WORKDIR /app
 # ADD . /app
 
-# During debugging, this entry point will be overridden. For more information, refer to https://aka.ms/vscode-docker-python-debug
-# File wsgi.py was not found in subfolder:crawler. Please enter the Python path to wsgi file.
-CMD ["gunicorn", "--bind", "0.0.0.0:80", "app.wsgi:application"]
+CMD ["gunicorn", "--bind=0.0.0.0:80", "app.wsgi:application"]
