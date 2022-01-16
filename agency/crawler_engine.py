@@ -26,7 +26,7 @@ class CrawlerEngine:
 
         # connect to chrome container
         self.driver = webdriver.Remote(
-            "http://crawler_chrome:4444/wd/hub",
+            "http://news_crawler_chrome:4444/wd/hub",
             desired_capabilities=DesiredCapabilities.CHROME,
             options=options,
         )
