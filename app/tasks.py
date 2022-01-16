@@ -114,7 +114,7 @@ def redis_exporter():
                 headers=Exporter_API_headers,
             )
         except Exception as e:
-            print('get error {}'.format(str(e)))
+            logging.error(e)
         if response.status_code == 200 or response.status_code == 406:
             logging.error(response.status_code)
             redis_news.delete(key)
