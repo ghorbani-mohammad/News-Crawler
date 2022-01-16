@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   crawler_api:
-    image: news_crawler
+    image: crawler
     container_name: news_crawler_api
     command: ["python", "/app/manage.py", "runserver", "0.0.0.0:8200"]
     build:
@@ -29,7 +29,7 @@ services:
       driver: none
   
   crawler_worker:
-    image: news_crawler
+    image: crawler
     container_name: news_crawler_worker
     env_file:
       - .env
@@ -44,7 +44,7 @@ services:
     restart: always
   
   crawler_beat:
-    image: news_crawler
+    image: crawler
     container_name: news_crawler_beat
     env_file:
       - .env
