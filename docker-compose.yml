@@ -2,12 +2,12 @@ version: '3.8'
 
 services:
   crawler_api:
-    build:
-      context: .
-      dockerfile: Dockerfile
     image: news_crawler
     container_name: news_crawler_api
     command: ["python", "/app/manage.py", "runserver", "0.0.0.0:8200"]
+    build:
+      context: .
+      dockerfile: Dockerfile
     env_file:
       - .env
     volumes:
