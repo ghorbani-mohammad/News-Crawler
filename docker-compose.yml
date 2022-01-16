@@ -4,7 +4,7 @@ services:
   crawler_api:
     image: news_crawler
     container_name: news_crawler_api
-    command: ["python", "/app/manage.py", "runserver", "0:8200"]
+    command: ["python", "/app/manage.py", "runserver", "0:80"]
     build:
       context: .
       dockerfile: Dockerfile
@@ -13,7 +13,7 @@ services:
     volumes:
       - .:/app
     ports: 
-      - 8200:8200
+      - 8200:80
     restart: unless-stopped
   
   crawler_worker:
