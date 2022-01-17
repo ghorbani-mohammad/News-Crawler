@@ -12,8 +12,8 @@ services:
     volumes:
       - .:/app
     ports:
-      - 8200:80
-    command: ["python", "/app/manage.py", "runserver", "0:80"]
+      - 8200:81
+    command: ["python", "/app/manage.py", "runserver", "0:81"]
     depends_on:
       - news_crawler_chrome
     restart: unless-stopped
