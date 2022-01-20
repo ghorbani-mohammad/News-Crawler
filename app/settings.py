@@ -18,7 +18,7 @@ DATABASES = {
         'NAME': 'postgres',
         'USER': DB_USER,
         'PASSWORD': DB_PASS,
-        'HOST': 'mongodb',
+        'HOST': 'rasad_postgres',
         'PORT': DB_PORT,
     },
 }
