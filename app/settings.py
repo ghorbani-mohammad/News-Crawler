@@ -18,7 +18,7 @@ DATABASES = {
         'NAME': 'postgres',
         'USER': DB_USER,
         'PASSWORD': DB_PASS,
-        'HOST': 'localhost',
+        'HOST': 'mongodb',
         'PORT': DB_PORT,
     },
 }
