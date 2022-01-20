@@ -45,3 +45,8 @@ services:
     image: redis
     container_name: news_crawler_redis
     restart: always
+
+networks:
+  default:
+    external:
+      name: army
