@@ -1,10 +1,9 @@
 version: '3.8'
 
 services:
-  crawler_api:
+  news_crawler_api:
     image: news_crawler
     container_name: news_crawler_api
-    command: ["python", "/app/manage.py", "runserver", "0:80"]
     build:
       context: .
       dockerfile: Dockerfile
@@ -13,10 +12,13 @@ services:
     volumes:
       - .:/app
     ports:
-      - "127.0.0.1:8200:80"
+      - 8200:81
+    command: ["python", "/app/manage.py", "runserver", "0:81"]
+    depends_on:
+      - news_crawler_chrome
     restart: unless-stopped
   
-  crawler_worker:
+  news_crawler_worker:
     image: news_crawler
     container_name: news_crawler_worker
     env_file:
@@ -24,9 +26,12 @@ services:
     volumes:
       - .:/app
     command: ["celery", "-A", "app", "worker", "-l", "info", "--pidfile="]
-    restart: always
+    depends_on:
+      - news_crawler_redis
+      - news_crawler_chrome
+    restart: unless-stopped
   
-  crawler_beat:
+  news_crawler_beat:
     image: news_crawler
     container_name: news_crawler_beat
     env_file:
@@ -34,17 +39,20 @@ services:
     volumes:
       - .:/app
     command: ["celery", "-A", "app", "beat", "-l", "info", "--pidfile="]
-    restart: always
+    depends_on:
+      - news_crawler_redis
+      - news_crawler_chrome
+    restart: unless-stopped
   
-  crawler_chrome:
+  news_crawler_chrome:
     image: selenium/standalone-chrome
     container_name: news_crawler_chrome
-    restart: always
+    restart: unless-stopped
 
-  redis:
+  news_crawler_redis:
     image: redis
     container_name: news_crawler_redis
-    restart: always
+    restart: unless-stopped
 
 networks:
   default:

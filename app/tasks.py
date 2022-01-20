@@ -36,7 +36,7 @@ Exporter_API_headers = {
 }
 
 
-def check_must_crwal(page):
+def check_must_crawl(page):
     now = datetime.datetime.now()
     try:
         status = Option.objects.filter(key='crawl_debug').firts().value
@@ -69,11 +69,11 @@ def check():
     now = datetime.datetime.now()
     for page in pages:
         if page.last_crawl is None:
-            check_must_crwal(page)
+            check_must_crawl(page)
         else:
             diff_hour = int((now - page.last_crawl).total_seconds() / (3600))
             if diff_hour >= page.crawl_interval:
-                check_must_crwal(page)
+                check_must_crawl(page)
 
 
 def crawl(page):
