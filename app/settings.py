@@ -1,7 +1,5 @@
 import os
-import environ
-
-env = environ.Env()
+from envparse import env
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'n6ld+$-+#x(j7!vys)uvbscvsmm51nwn+(z#3zeqjx+a-!vt_@'
