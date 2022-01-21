@@ -20,14 +20,14 @@ from agency.crawler_engine import CrawlerEngine
 logger = logging.getLogger('django')
 
 redis_news = redis.StrictRedis(host='news_crawler_redis', port=6379, db=0)
-Exporter_API_URI = "http://localhost:8888/crawler/news"
+Exporter_API_URI = "http://172.22.0.1:8888/crawler/news"
 Exporter_API_headers = {
     'Content-Type': "application/json",
     'User-Agent': "PostmanRuntime/7.17.1",
     'Accept': "*/*",
     'Cache-Control': "no-cache",
     'Postman-Token': "4b465a23-1b28-4b86-981d-67ccf94dda70,4beba7c1-fd77-4b44-bb14-2ea60fbfa590",
-    'Host': "localhost:8888",
+    'Host': "172.22.0.1:8888",
     'Accept-Encoding': "gzip, deflate",
     'Content-Length': "2796",
     'Connection': "keep-alive",
