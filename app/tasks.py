@@ -19,7 +19,6 @@ from agency.crawler_engine import CrawlerEngine
 
 logger = logging.getLogger('django')
 
-# TODO: configs must be dynamic
 redis_news = redis.StrictRedis(host='news_crawler_redis', port=6379, db=0)
 Exporter_API_URI = "http://localhost:8888/crawler/news"
 Exporter_API_headers = {
