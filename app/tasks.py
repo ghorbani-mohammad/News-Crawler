@@ -21,14 +21,14 @@ logger = logging.getLogger('django')
 
 # TODO: configs must be dynamic
 redis_news = redis.StrictRedis(host='news_crawler_redis', port=6379, db=0)
-Exporter_API_URI = "http://{}:8888/crawler/news".format(settings.SERVER_IP)
+Exporter_API_URI = "http://localhost:8888/crawler/news"
 Exporter_API_headers = {
     'Content-Type': "application/json",
     'User-Agent': "PostmanRuntime/7.17.1",
     'Accept': "*/*",
     'Cache-Control': "no-cache",
     'Postman-Token': "4b465a23-1b28-4b86-981d-67ccf94dda70,4beba7c1-fd77-4b44-bb14-2ea60fbfa590",
-    'Host': "{}:8888".format(settings.SERVER_IP),
+    'Host': "localhost:8888",
     'Accept-Encoding': "gzip, deflate",
     'Content-Length': "2796",
     'Connection': "keep-alive",
