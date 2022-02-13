@@ -13,4 +13,4 @@ RUN python -m pip install -r requirements.txt
 WORKDIR /app
 # ADD . /app
 
-CMD ["gunicorn", "--bind=0.0.0.0:81", "app.wsgi:application"]
+CMD ["gunicorn", "--reload", "--workers=2", "--worker-tmp-dir", "/dev/shm", "--bind=0.0.0.0:81", "--chdir", "/app/crawler", "crawler.wsgi"]
