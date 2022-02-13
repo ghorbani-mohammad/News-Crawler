@@ -16,7 +16,7 @@ crawler.config_from_object('django.conf:settings')
 crawler.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 
 # if you want to purge works queue
-# crawler.control.purge()
+crawler.control.purge()
 
 crawler.conf.beat_schedule = {
     'check-agencies-60-seconds': {
@@ -32,7 +32,3 @@ crawler.conf.beat_schedule = {
         'schedule': crontab(minute=0, hour=0),
     },
 }
-
-
-if __name__ == '__main__':
-    crawler.start()
