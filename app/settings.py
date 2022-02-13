@@ -15,10 +15,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'OPTIONS': {'options': '-c search_path=army'},
+        'HOST': 'postgres',
         'NAME': 'postgres',
         'USER': DB_USER,
         'PASSWORD': DB_PASS,
-        'HOST': 'postgres',
         'PORT': DB_PORT,
     },
 }
