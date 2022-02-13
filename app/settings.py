@@ -6,7 +6,7 @@ env = environ.Env()
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'n6ld+$-+#x(j7!vys)uvbscvsmm51nwn+(z#3zeqjx+a-!vt_@'
 DEBUG = True
-ALLOWED_HOSTS = ['localhost',env.str('SERVER_IP')]
+ALLOWED_HOSTS = ['localhost', env.str('SERVER_IP')]
 SERVER_IP = env.str('SERVER_IP')
 DB_PORT = env.str('DB_PORT')
 DB_USER = env.str('DB_USER')
@@ -148,3 +148,11 @@ LOGGING = {
         },
     },
 }
+
+# Celery
+BROKER_URL = 'redis://news_crawler_redis:6379'
+CELERY_RESULT_BACKEND = 'redis://news_crawler_redis:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Asia/Tehran'
