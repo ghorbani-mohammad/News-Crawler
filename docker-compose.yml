@@ -52,7 +52,6 @@ services:
   news_crawler_redis:
     image: redis
     container_name: news_crawler_redis
-    command: --port 6380
     restart: unless-stopped
 
 networks:
