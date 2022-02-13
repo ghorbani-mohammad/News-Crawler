@@ -121,3 +121,9 @@ CELERY_ACCEPT_CONTENT = ["application/json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"
 CELERY_TIMEZONE = "Asia/Tehran"
+
+
+# monkey patch to get rid of message below in docker
+from django.http.request import HttpRequest
+
+HttpRequest.get_host = HttpRequest._get_raw_host
