@@ -17,31 +17,31 @@ from agency.serializer import AgencyPageStructureSerializer
 from agency.crawler_engine import CrawlerEngine
 
 
-logger = logging.getLogger('django')
+logger = logging.getLogger("django")
 
-redis_news = redis.StrictRedis(host='news_crawler_redis', port=6379, db=0)
+redis_news = redis.StrictRedis(host="news_crawler_redis", port=6379, db=0)
 Exporter_API_URI = "http://172.22.0.1:8888/crawler/news"
 Exporter_API_headers = {
-    'Content-Type': "application/json",
-    'User-Agent': "PostmanRuntime/7.17.1",
-    'Accept': "*/*",
-    'Cache-Control': "no-cache",
-    'Postman-Token': "4b465a23-1b28-4b86-981d-67ccf94dda70,4beba7c1-fd77-4b44-bb14-2ea60fbfa590",
-    'Host': "172.22.0.1:8888",
-    'Accept-Encoding': "gzip, deflate",
-    'Content-Length': "2796",
-    'Connection': "keep-alive",
-    'cache-control': "no-cache",
+    "Content-Type": "application/json",
+    "User-Agent": "PostmanRuntime/7.17.1",
+    "Accept": "*/*",
+    "Cache-Control": "no-cache",
+    "Postman-Token": "4b465a23-1b28-4b86-981d-67ccf94dda70,4beba7c1-fd77-4b44-bb14-2ea60fbfa590",
+    "Host": "172.22.0.1:8888",
+    "Accept-Encoding": "gzip, deflate",
+    "Content-Length": "2796",
+    "Connection": "keep-alive",
+    "cache-control": "no-cache",
 }
 
 
 def check_must_crawl(page):
     now = datetime.datetime.now()
     try:
-        status = Option.objects.filter(key='crawl_debug').firts().value
+        status = Option.objects.filter(key="crawl_debug").firts().value
     except:
-        status = 'False'
-    x = CrawlReport.objects.filter(page=page.id, status='pending')
+        status = "False"
+    x = CrawlReport.objects.filter(page=page.id, status="pending")
     if x.count() == 0:
         crawl(page)
     else:
@@ -49,18 +49,18 @@ def check_must_crawl(page):
         if (
             int((now - last_report.created_at).total_seconds() / (3600))
             >= page.crawl_interval
-            or status == 'True'
+            or status == "True"
         ):
-            last_report.status = 'failed'
+            last_report.status = "failed"
             last_report.save()
             crawl(page)
 
 
-@crawler.task(name='check_agencies')
+@crawler.task(name="check_agencies")
 def check():
     logger.info("---***> Check_agencies is started <***----")
     agencies = Agency.objects.filter(status=True, deleted_at=None).values_list(
-        'id', flat=True
+        "id", flat=True
     )
     pages = AgencyPageStructure.objects.filter(
         agency__in=agencies, deleted_at=None, lock=False
@@ -81,30 +81,30 @@ def crawl(page):
     page_crawl.delay(serializer.data)
 
 
-@crawler.task(name='page_crawl')
+@crawler.task(name="page_crawl")
 def page_crawl(page_structure):
     logger.info("---> Page crawling is started")
     crawler = CrawlerEngine(page_structure)
     crawler.run()
 
 
-@crawler.task(name='redis_exporter')
+@crawler.task(name="redis_exporter")
 def redis_exporter():
     logger.info("---> Redis exporter is started")
     # try:
-    for key in redis_news.keys('*'):
-        data = redis_news.get(key).decode('utf-8')
+    for key in redis_news.keys("*"):
+        data = redis_news.get(key).decode("utf-8")
         try:
             data = json.loads(data)
         except:
             print(data)
             continue
-        if not 'date' in data:
-            data['date'] = int(datetime.datetime.now().timestamp())
-        if not 'agency_id' in data:
+        if not "date" in data:
+            data["date"] = int(datetime.datetime.now().timestamp())
+        if not "agency_id" in data:
             redis_news.delete(key)
             continue
-        data['agency_id'] = int(data['agency_id'])
+        data["agency_id"] = int(data["agency_id"])
         try:
             response = requests.request(
                 "GET",
@@ -122,29 +122,29 @@ def redis_exporter():
             logging.error(response.status_code)
             redis_news.delete(key)
             logging.error(
-                'Exporter error. code: %s || message: %s',
+                "Exporter error. code: %s || message: %s",
                 str(response.status_code),
                 str(response.text),
             )
-            logging.error('Redis-key: %s', str(key))
+            logging.error("Redis-key: %s", str(key))
         elif response.status_code == 500:
             logging.error(
-                'Exporter error. code: %s || message: %s',
+                "Exporter error. code: %s || message: %s",
                 str(response.status_code),
                 str(response.text),
             )
-            logging.error('Redis-key: %s', str(key))
+            logging.error("Redis-key: %s", str(key))
             return
         else:
             logging.error(
-                'Exporter error. code: %s || message: %s',
+                "Exporter error. code: %s || message: %s",
                 str(response.status_code),
                 str(response.text),
             )
-            logging.error('Redis-key: %s', str(key))
+            logging.error("Redis-key: %s", str(key))
 
 
-@crawler.task(name='remove_obsolete_reports')
+@crawler.task(name="remove_obsolete_reports")
 def remove_obsolete_reports():
     now = datetime.datetime.now()
     past_month = now - relativedelta.relativedelta(months=1)
