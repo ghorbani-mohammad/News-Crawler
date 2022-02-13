@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, re_path, include
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns 
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('secret-admin/', admin.site.urls),

@@ -8,17 +8,10 @@ from django.conf import settings
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'app.settings')
 
 # TODO: redis port and ip and db must be dynamic
-crawler = Celery(
-    'crawler',
-    broker='redis://news_crawler_redis:6379/10',
-    backend='redis://news_crawler_redis:6379/10',
-    include=['app.tasks'],
-)
+crawler = Celery('crawler')
 
 # Optional configuration, see the application user guide.
-crawler.conf.update(
-    result_expires=7200,
-)
+crawler.conf.update(result_expires=7200)
 crawler.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 
 # if you want to purge works queue
@@ -36,7 +29,7 @@ crawler.conf.beat_schedule = {
     'remove_obsolete_reports': {
         'task': 'remove_obsolete_reports',
         'schedule': crontab(minute=0, hour=0),
-    }
+    },
 }
 
 

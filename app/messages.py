@@ -1,9 +1,9 @@
 msg = {
     'fa': {
-        'app':{
-            'json_validation_error': 'درخواست ساختار جیسون ندارد، فیلدها را چک کنید', 
+        'app': {
+            'json_validation_error': 'درخواست ساختار جیسون ندارد، فیلدها را چک کنید',
         },
-        'crawl':{
+        'crawl': {
             'success_crawl_all': 'کرال تمامی صفحات در صف انجام عملیات قرار گرفت',
             'success_crawl_agency_activeAll': 'تمامی آژانس های خبری فعال شدند',
             'success_crawl_agency_disableAll': 'تمامی آژانس های خبری غیر فعال شدند',
@@ -11,12 +11,12 @@ msg = {
             'success_crawl_page': 'کرال صفحه ی مورد نظر در صف انجام عملیات قرار گرفت',
             'success_crawl_memory_reset': 'حافظه ماژول کرال پاک شد',
         },
-        'report':{
+        'report': {
             'report_found': 'گزارش مورد نظر یافت شد',
             'report_not_found': 'گزارش مورد نظر یافت نشد',
             'reports_retrieved': 'لیست گزارش ها دریافت شد',
         },
-        'agency':{
+        'agency': {
             'success_agency_deleted': 'آژانس خبری حذف شد',
             'success_agency_created': 'آژانس خبری ایجاد شد',
             'success_agency_updated': 'آژانس خبری ویرایش شد',
@@ -28,7 +28,7 @@ msg = {
             'agencys_retrieved': 'لیست آژانس ها دریافت شد',
             'retrieved_pages': 'صفحات آژانس دریافت شد',
         },
-        'page':{
+        'page': {
             'success_page_deleted': 'صفحه خبری حذف شد',
             'success_page_created': 'صفحه خبری ایجاد شد',
             'success_page_updated': 'صفحه خبری ویرایش شد',
@@ -38,9 +38,7 @@ msg = {
             'page_found': 'صفحه مورد نظر یافت شد',
             'page_not_found': 'صفحه مورد نظر یافت نشد',
             'pages_retrieved': 'لیست صفحه ها دریافت شد',
-        }
+        },
     },
-    'en': {
-
-    }
+    'en': {},
 }

@@ -143,6 +143,7 @@ def redis_exporter():
             )
             logging.error('Redis-key: %s', str(key))
 
+
 @crawler.task(name='remove_obsolete_reports')
 def remove_obsolete_reports():
     now = datetime.datetime.now()
