@@ -4,10 +4,9 @@ from django.http.request import HttpRequest
 
 env = environ.Env()
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SECRET_KEY = "n6ld+$-+#x(j7!vys)uvbscvsmm51nwn+(z#3zeqjx+a-!vt_@"
-DEBUG = True
 ALLOWED_HOSTS = ["*"]
+DEBUG = env.bool("DEBUG")
+SECRET_KEY = env.str("SECRET_KEY")
 SERVER_IP = env.str("SERVER_IP")
 DB_PORT = env.str("DB_PORT")
 DB_USER = env.str("DB_USER")
@@ -23,6 +22,7 @@ DATABASES = {
         "PORT": DB_PORT,
     },
 }
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Application definition
