@@ -16,7 +16,7 @@ from .serializer import (
     ReportListSerializer,
 )
 from .models import Agency, AgencyPageStructure, CrawlReport
-from crawler.messages import *
+from reusable.messages import *
 
 
 class PostPagination(PageNumberPagination):
