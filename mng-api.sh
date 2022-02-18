@@ -25,7 +25,7 @@ function bash() {
 }
 
 function shell() {
-    docker exec -it ${API_CONTAINER_NAME} ./manage.py shell
+    docker exec -it ${API_CONTAINER_NAME} ./crawler/manage.py shell
 }
 
 function drop_db() {
