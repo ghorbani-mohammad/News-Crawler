@@ -7,19 +7,15 @@ env = environ.Env()
 ALLOWED_HOSTS = ["*"]
 DEBUG = env.bool("DEBUG")
 SECRET_KEY = env.str("SECRET_KEY")
-SERVER_IP = env.str("SERVER_IP")
-DB_PORT = env.str("DB_PORT")
-DB_USER = env.str("DB_USER")
-DB_PASS = env.str("DB_PASS")
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "OPTIONS": {"options": "-c search_path=army"},
         "HOST": "postgres",
         "NAME": "postgres",
-        "USER": DB_USER,
-        "PASSWORD": DB_PASS,
-        "PORT": DB_PORT,
+        "USER": env.str("DB_USER"),
+        "PASSWORD": env.str("DB_PASS"),
+        "PORT": env.str("DB_PORT"),
     },
 }
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
