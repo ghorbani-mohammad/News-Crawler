@@ -1,5 +1,6 @@
 import redis, datetime
-from django.http import HttpResponse, JsonResponse
+
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.pagination import PageNumberPagination
@@ -9,14 +10,13 @@ from rest_framework import viewsets
 from rest_framework.viewsets import ReadOnlyModelViewSet
 from rest_framework.exceptions import NotAcceptable
 
-from agency.serializer import (
+from .serializer import (
     AgencySerializer,
     AgencyPageStructureSerializer,
     ReportListSerializer,
 )
-from agency.models import Agency, AgencyPageStructure, CrawlReport
+from .models import Agency, AgencyPageStructure, CrawlReport
 from crawler.messages import *
-from . import tasks
 
 
 class PostPagination(PageNumberPagination):
