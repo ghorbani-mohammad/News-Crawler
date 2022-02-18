@@ -1,17 +1,10 @@
 from __future__ import absolute_import, unicode_literals
-import requests
-import logging, datetime, redis, requests, json
-from bs4 import BeautifulSoup
+import logging, datetime, redis, requests, json, requests
 from dateutil import relativedelta
 
-
-from seleniumwire import webdriver
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-from selenium.webdriver.chrome.options import Options
 from celery.task.schedules import crontab
 
 from crawler.celery import crawler
-from django.conf import settings
 from .models import Agency, AgencyPageStructure, CrawlReport, Option
 from .serializer import AgencyPageStructureSerializer
 from .crawler_engine import CrawlerEngine
