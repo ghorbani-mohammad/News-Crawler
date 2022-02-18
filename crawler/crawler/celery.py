@@ -11,7 +11,6 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "crawler.settings")
 crawler = Celery("crawler")
 
 # Optional configuration, see the application user guide.
-crawler.conf.update(result_expires=7200)
 crawler.config_from_object("django.conf:settings")
 crawler.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 

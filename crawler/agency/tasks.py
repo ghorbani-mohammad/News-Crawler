@@ -10,14 +10,14 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.chrome.options import Options
 from celery.task.schedules import crontab
 
-from .celery import crawler
+from crawler.celery import crawler
 from django.conf import settings
-from agency.models import Agency, AgencyPageStructure, CrawlReport, Option
-from agency.serializer import AgencyPageStructureSerializer
-from agency.crawler_engine import CrawlerEngine
+from .models import Agency, AgencyPageStructure, CrawlReport, Option
+from .serializer import AgencyPageStructureSerializer
+from .crawler_engine import CrawlerEngine
 
 
-logger = logging.getLogger("django")
+logger = logging.getLogger(__name__)
 
 redis_news = redis.StrictRedis(host="news_crawler_redis", port=6379, db=0)
 Exporter_API_URI = "http://172.22.0.1:8888/crawler/news"
