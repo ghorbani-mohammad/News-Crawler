@@ -8,9 +8,13 @@ from crawler.celery import crawler
 from .models import Agency, AgencyPageStructure, CrawlReport, Option
 from .serializer import AgencyPageStructureSerializer
 from .crawler_engine import CrawlerEngine
+from reusable.other import only_one_concurrency
 
 
 logger = logging.getLogger(__name__)
+MINUTE = 60
+TASKS_TIMEOUT = 10 * MINUTE
+
 
 redis_news = redis.StrictRedis(host="news_crawler_redis", port=6379, db=0)
 Exporter_API_URI = "http://172.22.0.1:8888/crawler/news"
@@ -82,9 +86,9 @@ def page_crawl(page_structure):
 
 
 @crawler.task(name="redis_exporter")
+@only_one_concurrency(key="redis_exporter", timeout=TASKS_TIMEOUT)
 def redis_exporter():
     logger.info("---> Redis exporter is started")
-    # try:
     for key in redis_news.keys("*"):
         data = redis_news.get(key).decode("utf-8")
         try:
