@@ -26,7 +26,7 @@ services:
     volumes:
       - .:/app
     working_dir: /app/crawler
-    command: ["celery", "-A", "crawler", "worker", "-l", "info", "--pidfile="]
+    command: ["celery", "-A", "crawler", "worker", "-l", "info", "--pidfile=", "--concurrency=1"]
     depends_on:
       - news_crawler_redis
       - news_crawler_chrome
