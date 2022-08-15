@@ -9,6 +9,6 @@ urlpatterns = [
 
 urlpatterns += staticfiles_urlpatterns()
 
-admin.site.site_header = "Crawler Administration Panel"
 admin.site.index_title = "Crawler"
 admin.site.site_title = "Crawler Admin"
+admin.site.site_header = "Crawler Administration Panel"
