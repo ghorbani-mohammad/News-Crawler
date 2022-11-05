@@ -1,6 +1,6 @@
-from prettyjson import PrettyJSONWidget
 from django import forms
 from django.contrib import admin
+from prettyjson import PrettyJSONWidget
 from django.utils.html import format_html
 from rangefilter.filter import DateTimeRangeFilter
 
