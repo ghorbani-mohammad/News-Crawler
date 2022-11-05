@@ -1,7 +1,7 @@
 import datetime
 from django.db.models import Sum
-from celery.decorators import periodic_task
 from celery.task.schedules import crontab
+from celery.decorators import periodic_task
 
 from . import utils
 from . import models
