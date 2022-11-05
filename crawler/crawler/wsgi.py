@@ -11,5 +11,5 @@ print(
     f"***** {AgencyPageStructure.objects.filter(lock=True).update(lock=False)} update: lock=False *****"
 )
 print(
-    f"********* {CrawlReport.objects.filter(status='pending').update(status='failed')} update: status=failed *****"
+    f"***** {CrawlReport.objects.filter(status='pending').update(status='failed')} update: status=failed *****"
 )
