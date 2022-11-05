@@ -4,8 +4,8 @@ from celery.decorators import periodic_task
 from celery.task.schedules import crontab
 
 from . import utils
-from agency import models as age_models
 from . import models
+from agency import models as age_models
 
 
 @periodic_task(
