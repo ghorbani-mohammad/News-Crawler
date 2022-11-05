@@ -70,7 +70,6 @@ class AgencyPageStructureAdmin(admin.ModelAdmin):
         "lock",
     )
     list_filter = ("agency",)
-
     form = AgencyPageStructureForm
 
     def agency(self, obj):
