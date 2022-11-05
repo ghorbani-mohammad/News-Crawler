@@ -9,8 +9,17 @@ from agency.models import Agency, AgencyPageStructure, CrawlReport
 
 @admin.register(CrawlReport)
 class CrawlReportAdmin(admin.ModelAdmin):
-    list_display = ('id', 'agency', 'page', 'fetched_links', 'new_links', 'started_at', 'duration', 'status')
-    list_filter = (('created_at', DateTimeRangeFilter), 'page__agency')
+    list_display = (
+        "id",
+        "agency",
+        "page",
+        "fetched_links",
+        "new_links",
+        "started_at",
+        "duration",
+        "status",
+    )
+    list_filter = (("created_at", DateTimeRangeFilter), "page__agency")
     list_per_page = 50
 
     def agency(self, obj):
@@ -26,24 +35,31 @@ class CrawlReportAdmin(admin.ModelAdmin):
 
 @admin.register(Agency)
 class AgencyAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'country', 'website', 'status', 'alexa_global_rank')
+    list_display = ("id", "name", "country", "website", "status", "alexa_global_rank")
 
 
 class AgencyPageStructureForm(forms.ModelForm):
-
     class Meta:
         model = AgencyPageStructure
-        fields = '__all__'
+        fields = "__all__"
         widgets = {
-            'news_links_structure': PrettyJSONWidget(),
-            'news_meta_structure': PrettyJSONWidget(),
+            "news_links_structure": PrettyJSONWidget(),
+            "news_meta_structure": PrettyJSONWidget(),
         }
 
 
 @admin.register(AgencyPageStructure)
 class AgencyPageStructureAdmin(admin.ModelAdmin):
-    list_display = ('id', 'agency', 'url2', 'crawl_interval', 'last_crawl', 'status', 'lock')
-    list_filter = ('agency',)
+    list_display = (
+        "id",
+        "agency",
+        "url2",
+        "crawl_interval",
+        "last_crawl",
+        "status",
+        "lock",
+    )
+    list_filter = ("agency",)
 
     form = AgencyPageStructureForm
 
