@@ -9,12 +9,12 @@ DEBUG = env.bool("DEBUG")
 SECRET_KEY = env.str("SECRET_KEY")
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
         "HOST": "postgres",
         "NAME": "postgres",
         "USER": env.str("DB_USER"),
         "PASSWORD": env.str("DB_PASS"),
         "PORT": env.str("DB_PORT"),
+        "ENGINE": "django.db.backends.postgresql",
         "OPTIONS": {"options": "-c search_path=army"},
     },
 }
