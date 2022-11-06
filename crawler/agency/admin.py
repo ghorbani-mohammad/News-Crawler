@@ -9,6 +9,7 @@ from agency.models import Agency, AgencyPageStructure, CrawlReport
 
 @admin.register(CrawlReport)
 class CrawlReportAdmin(admin.ModelAdmin):
+    list_per_page = 50
     list_display = (
         "id",
         "agency",
@@ -20,7 +21,6 @@ class CrawlReportAdmin(admin.ModelAdmin):
         "status",
     )
     list_filter = (("created_at", DateTimeRangeFilter), "page__agency")
-    list_per_page = 50
 
     def agency(self, obj):
         return obj.page.agency.name
