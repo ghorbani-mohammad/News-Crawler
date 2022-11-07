@@ -29,8 +29,8 @@ class CrawlReportAdmin(admin.ModelAdmin):
         return obj.created_at
 
     def duration(self, obj):
-        x = round((obj.updated_at - obj.created_at).total_seconds())
-        return f"{x} seconds"
+        seconds = round((obj.updated_at - obj.created_at).total_seconds())
+        return f"{seconds} seconds"
 
 
 @admin.register(Agency)
