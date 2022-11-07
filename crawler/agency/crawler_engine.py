@@ -132,7 +132,7 @@ class CrawlerEngine:
             if "code" in attribute.keys():
                 code = attribute["code"]
                 del attribute["code"]
-            self.custom_logging("key: {} tag: {} attr: {}".format(key, tag, attribute))
+            self.custom_logging(f"key: {key} tag: {tag} attr: {attribute}")
             element = doc.find(tag, attribute)
             if element is None:
                 self.custom_logging("element is null, attribute: {}".format(attribute))
