@@ -70,9 +70,7 @@ class CrawlerEngine:
         attribute = self.page["news_links_structure"]
         attribute = json.dumps(attribute)
         attribute = json.loads(attribute)
-        self.custom_logging(
-            "\n\nstructure for fetching links are: \n{}\n\n".format(attribute)
-        )
+        self.custom_logging(f"\n\nstructure for fetching links are: \n{attribute}\n\n")
         tag = attribute["tag"]
         del attribute["tag"]
         code = ""
