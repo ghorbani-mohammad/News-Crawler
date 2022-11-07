@@ -108,7 +108,6 @@ class CrawlerEngine:
         for key in meta.keys():
             attribute = meta[key].copy()
             tag = attribute["tag"]
-
             del attribute["tag"]
             if tag == "value":
                 article[key] = attribute["value"]
