@@ -99,7 +99,7 @@ class CrawlerEngine:
         meta = self.page["news_meta_structure"]
         article = {}
         article["link"] = link
-        self.custom_logging("getting content of news: {}".format(link))
+        self.custom_logging(f"getting content of news: {link}")
         self.driver.get(link)
         # TODO: sleep to page load must be dynamic
         # do some sleep to all elements of page loaded completely
