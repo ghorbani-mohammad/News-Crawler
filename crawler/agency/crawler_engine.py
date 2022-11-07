@@ -112,9 +112,7 @@ class CrawlerEngine:
             if tag == "value":
                 article[key] = attribute["value"]
                 self.custom_logging(
-                    "\tspecified tag get's value directly and it's value is: \n {}".format(
-                        attribute["value"]
-                    )
+                    f"\tspecified tag get's value directly and it's value is: \n {attribute['value']}"
                 )
                 continue
             if tag == "code":
