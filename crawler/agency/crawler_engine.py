@@ -184,7 +184,7 @@ class CrawlerEngine:
 
     def custom_logging(self, message):
         logger.info(message)
-        self.log_messages += "{} \n".format(message)
+        self.log_messages += f"{message} \n"
 
     def run(self):
         self.custom_logging(
