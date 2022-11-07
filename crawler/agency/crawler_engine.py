@@ -126,7 +126,7 @@ class CrawlerEngine:
                 except Exception as e:
                     self.custom_logging(f"Getting attr {key} got error")
                     self.custom_logging(f"The code was:\n {temp_code} ")
-                    self.custom_logging("Error was:\n {}".format(str(e)))
+                    self.custom_logging(f"Error was:\n {str(e)}")
                 continue
             code = ""
             if "code" in attribute.keys():
