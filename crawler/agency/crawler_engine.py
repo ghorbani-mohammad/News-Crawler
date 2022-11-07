@@ -83,7 +83,7 @@ class CrawlerEngine:
 {0}
             """
             temp_code = temp_code.format(code)
-            self.custom_logging("Executing code: \n{}".format(temp_code))
+            self.custom_logging(f"Executing code: \n{temp_code}")
             exec(temp_code)
             self.custom_logging("executed code")
         else:
