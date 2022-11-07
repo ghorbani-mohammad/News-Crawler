@@ -124,7 +124,7 @@ class CrawlerEngine:
                 try:
                     exec(temp_code)
                 except Exception as e:
-                    self.custom_logging("Getting attr {} got error".format(key))
+                    self.custom_logging(f"Getting attr {key} got error")
                     self.custom_logging("The code was:\n {} ".format(temp_code))
                     self.custom_logging("Error was:\n {}".format(str(e)))
                 continue
