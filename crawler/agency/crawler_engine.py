@@ -187,9 +187,7 @@ class CrawlerEngine:
         self.log_messages += f"{message} \n"
 
     def run(self):
-        self.custom_logging(
-            "------> Fetching links from {} started".format(self.page["url"])
-        )
+        self.custom_logging(f"------> Fetching links from {self.page['url']} started")
         self.fetch_links()
         self.custom_logging(
             "------> We found {} number of links: ".format(self.fetched_links_count)
