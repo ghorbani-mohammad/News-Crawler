@@ -253,7 +253,6 @@ class CrawlerEngineV2:
         for key in structure.keys():
             attribute = structure[key].copy()
             tag = attribute["tag"]
-
             del attribute["tag"]
             if tag == "value":
                 article[key] = attribute["value"]
