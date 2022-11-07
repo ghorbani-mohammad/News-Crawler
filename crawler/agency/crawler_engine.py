@@ -135,7 +135,7 @@ class CrawlerEngine:
             self.custom_logging(f"key: {key} tag: {tag} attr: {attribute}")
             element = doc.find(tag, attribute)
             if element is None:
-                self.custom_logging("element is null, attribute: {}".format(attribute))
+                self.custom_logging(f"element is null, attribute: {attribute}")
                 break
             if code != "":
                 temp_code = """
