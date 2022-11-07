@@ -190,7 +190,7 @@ class CrawlerEngine:
         self.custom_logging(f"------> Fetching links from {self.page['url']} started")
         self.fetch_links()
         self.custom_logging(
-            "------> We found {} number of links: ".format(self.fetched_links_count)
+            f"------> We found {self.fetched_links_count} number of links"
         )
         self.check_links()
 
