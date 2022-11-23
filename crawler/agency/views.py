@@ -73,11 +73,11 @@ class AgencyView(viewsets.ModelViewSet):
                 {"status": "400", "message": msg["fa"]["agency"]["agency_not_found"]}
             )
         serializer = AgencySerializer(agency)
-        x = {}
-        x["status"] = "200"
-        x["message"] = msg["fa"]["agency"]["agency_found"]
-        x["data"] = serializer.data
-        return Response(x)
+        result = {}
+        result["status"] = "200"
+        result["message"] = msg["fa"]["agency"]["agency_found"]
+        result["data"] = serializer.data
+        return Response(result)
 
     def destroy(self, request, version, pk=None):
         try:
