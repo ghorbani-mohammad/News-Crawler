@@ -58,8 +58,8 @@ class ReportListSerializer(serializers.ModelSerializer):
     duration = serializers.SerializerMethodField("is_named_bar")
 
     def is_named_bar(self, obj):
-        x = round((obj.updated_at - obj.created_at).total_seconds())
-        return "{} sec".format(x)
+        seconds = round((obj.updated_at - obj.created_at).total_seconds())
+        return "{} sec".format(seconds)
 
     class Meta:
         model = CrawlReport
