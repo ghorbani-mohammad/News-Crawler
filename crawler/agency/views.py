@@ -324,10 +324,10 @@ class ReportView(ReadOnlyModelViewSet):
         queryset = CrawlReport.objects.all().order_by("-id")
         page = self.paginate_queryset(queryset)
         serializer = ReportListSerializer(page, many=True)
-        x = {}
-        x["status"] = "200"
-        x["message"] = msg["fa"]["report"]["report_found"]
-        x["data"] = serializer.data
+        result = {}
+        result["status"] = "200"
+        result["message"] = msg["fa"]["report"]["report_found"]
+        result["data"] = serializer.data
         return self.get_paginated_response(serializer.data)
 
     def retrieve(self, request, version, pk=None):
