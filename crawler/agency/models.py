@@ -49,7 +49,7 @@ class CrawlReport(models.Model):
     log = models.TextField(blank=True)
 
     def __str__(self):
-        return self.page.url
+        return f"({self.pk} - {self.page.url})"
 
 
 class Option(models.Model):
