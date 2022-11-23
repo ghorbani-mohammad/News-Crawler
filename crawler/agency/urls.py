@@ -8,8 +8,8 @@ router.register("page", views.PageView)
 router.register("report", views.ReportView, basename="crawlreport")
 
 urlpatterns = [
-    path("", include(router.urls)),
     path("crawl/", views.crawl),
+    path("", include(router.urls)),
     path("fetch_links/", views.FetchLinks.as_view()),
     path("crawl/page/<int:page_id>/", views.crawl_page),
     path("fetch_content/", views.FetchContent.as_view()),
