@@ -1,6 +1,6 @@
 from rest_framework import serializers
-from agency.models import Agency, CrawlReport, AgencyPageStructure
 from rest_framework.fields import CharField
+from agency.models import Agency, CrawlReport, AgencyPageStructure
 
 
 class AgencySerializer(serializers.ModelSerializer):
