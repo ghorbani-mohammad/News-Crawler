@@ -18,9 +18,9 @@ urlpatterns = [
     path("crawl/agency/disable_all/", views.crawl_agency_disableAll),
     path("crawl/agency/<int:agency_id>/", views.crawl_agency),
     path("crawl/memory/reset/", views.crawl_memory_reset),
-    path("crawl/memory/reset/<int:agency_id>/", views.crawl_agency_reset_memory),
     path("crawl/news/memory/list/", views.crawl_news_memory_list),
     path("crawl/links/memory/list/", views.crawl_links_memory_list),
+    path("crawl/memory/reset/<int:agency_id>/", views.crawl_agency_reset_memory),
     path(
         "crawl/agency/reset_and_crawl/<int:agency_id>/",
         views.crawl_agency_reset_memory_and_crawl,
