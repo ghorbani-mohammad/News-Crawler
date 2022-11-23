@@ -15,8 +15,8 @@ from .serializer import (
     AgencyPageStructureSerializer,
     ReportListSerializer,
 )
-from .models import Agency, AgencyPageStructure, CrawlReport
 from reusable.messages import *
+from .models import Agency, AgencyPageStructure, CrawlReport
 
 
 class PostPagination(PageNumberPagination):
