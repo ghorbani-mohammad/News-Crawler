@@ -34,7 +34,7 @@ class AgencyPageStructure(models.Model):
     deleted_at = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
-        return self.url
+        return f"({self.pk} - {self.url})"
 
 
 class CrawlReport(models.Model):
@@ -48,7 +48,7 @@ class CrawlReport(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     log = models.TextField(blank=True)
 
-    def __str(self):
+    def __str__(self):
         return self.page.url
 
 
