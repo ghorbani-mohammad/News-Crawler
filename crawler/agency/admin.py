@@ -35,7 +35,14 @@ class CrawlReportAdmin(admin.ModelAdmin):
 
 @admin.register(Agency)
 class AgencyAdmin(admin.ModelAdmin):
-    list_display = ("id", "name", "country", "website", "status", "alexa_global_rank")
+    list_display = (
+        "id",
+        "name",
+        "country",
+        "website",
+        "status",
+        "alexa_global_rank",
+    )
 
 
 class AgencyPageStructureForm(forms.ModelForm):
