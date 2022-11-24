@@ -103,11 +103,11 @@ REST_FRAMEWORK = {
 }
 
 # Celery
-BROKER_URL = "redis://news_crawler_redis:6379/10"
 CELERY_ACCEPT_CONTENT = ["application/json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"
 CELERY_TIMEZONE = "Asia/Tehran"
+BROKER_URL = "redis://news_crawler_redis:6379/10"
 CELERY_RESULT_BACKEND = "redis://news_crawler_redis:6379/10"
 
 
