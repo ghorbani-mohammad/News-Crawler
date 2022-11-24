@@ -17,10 +17,7 @@ crawler.control.purge()
 MINUTE = 60
 
 crawler.conf.beat_schedule = {
-    "check-agencies-60-seconds": {
-        "task": "check_agencies",
-        "schedule": 10 * MINUTE,
-    },
+    "check-agencies-60-seconds": {"task": "check_agencies", "schedule": 10 * MINUTE},
     "redis-exporter-300-seconds": {
         "task": "redis_exporter",
         "schedule": 5 * MINUTE,
