@@ -18,10 +18,7 @@ MINUTE = 60
 
 crawler.conf.beat_schedule = {
     "check-agencies-60-seconds": {"task": "check_agencies", "schedule": 10 * MINUTE},
-    "redis-exporter-300-seconds": {
-        "task": "redis_exporter",
-        "schedule": 5 * MINUTE,
-    },
+    "redis-exporter-300-seconds": {"task": "redis_exporter", "schedule": 5 * MINUTE},
     "remove_obsolete_reports": {
         "task": "remove_obsolete_reports",
         "schedule": crontab(minute=0, hour=0),
