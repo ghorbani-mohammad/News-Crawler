@@ -20,7 +20,10 @@ class CrawlReportAdmin(admin.ModelAdmin):
         "duration",
         "status",
     )
-    list_filter = ("page__agency", ("created_at", DateTimeRangeFilter))
+    list_filter = (
+        "page__agency",
+        ("created_at", DateTimeRangeFilter),
+    )
 
     def agency(self, obj):
         return obj.page.agency.name
