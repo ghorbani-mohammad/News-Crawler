@@ -89,7 +89,7 @@ def page_crawl(page_structure):
 @crawler.task(name="redis_exporter")
 @only_one_concurrency(key="redis_exporter", timeout=TASKS_TIMEOUT)
 def redis_exporter():
-    logger.info("---> Redis exporter is started")
+    logger.info("*** Redis exporter is started ***")
     for key in redis_news.keys("*"):
         data = redis_news.get(key).decode("utf-8")
         try:
