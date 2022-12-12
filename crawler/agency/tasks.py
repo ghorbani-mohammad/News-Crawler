@@ -73,7 +73,7 @@ def check():
 
 
 def crawl(page):
-    logger.info("*** Page %s must be crawled", page.url)
+    logger.info("*** Page %s must be crawled ***", page.url)
     serializer = AgencyPageStructureSerializer(page)
     page_crawl.delay(serializer.data)
 
