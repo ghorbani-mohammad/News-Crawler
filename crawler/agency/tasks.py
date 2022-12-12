@@ -35,7 +35,7 @@ Exporter_API_headers = {
 def check_must_crawl(page):
     now = datetime.datetime.now()
     try:
-        status = Option.objects.filter(key="crawl_debug").firts().value
+        status = Option.objects.filter(key="crawl_debug").first().value
     except:
         status = "False"
     x = CrawlReport.objects.filter(page=page.id, status="pending")
