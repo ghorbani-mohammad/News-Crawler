@@ -22,8 +22,4 @@ def only_one_concurrency(function=None, key="", timeout=None):
 
 
 class ReadOnlyAdminDateFields:
-    readonly_fields = (
-        "created_at",
-        "updated_at",
-        "deleted_at",
-    )
+    readonly_fields = ("created_at", "updated_at", "deleted_at")
