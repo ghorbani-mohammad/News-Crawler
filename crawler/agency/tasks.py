@@ -55,7 +55,7 @@ def check_must_crawl(page):
 
 @crawler.task(name="check_agencies")
 def check():
-    logger.info("***> Check_agencies is started <***")
+    logger.info("*** Check_agencies is started <***")
     agencies = Agency.objects.filter(status=True, deleted_at=None).values_list(
         "id", flat=True
     )
