@@ -5,7 +5,7 @@ REDIS_CLIENT = redis.Redis(host="news_crawler_redis", port=6379, db=5)
 
 def only_one_concurrency(function=None, key="", timeout=None):
     def _dec(run_func):
-        def _caller(*args, **kwargs):
+        def wrapper(*args, **kwargs):
             have_lock = False
             lock = REDIS_CLIENT.lock(key, timeout=timeout)
             try:
@@ -16,7 +16,7 @@ def only_one_concurrency(function=None, key="", timeout=None):
                 if have_lock:
                     lock.release()
 
-        return _caller
+        return wrapper
 
     return _dec(function) if function is not None else _dec
 
