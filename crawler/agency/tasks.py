@@ -81,7 +81,7 @@ def crawl(page):
 @crawler.task(name="page_crawl")
 @only_one_concurrency(key="page_crawl", timeout=TASKS_TIMEOUT)
 def page_crawl(page_structure):
-    logger.info("---> Page crawling is started")
+    logger.info("*** Page crawling is started ***")
     crawler = CrawlerEngine(page_structure)
     crawler.run()
 
